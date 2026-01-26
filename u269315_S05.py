@@ -46,7 +46,7 @@ def print_sequence_summary(filename, output_filename, first_n = 10, last_m = 10)
 
             output_file.write(f"{header}\t{first_part}\t{last_part}\t{counts_str}\n")
 
-for entry in os.scandir(DIR_PATH):  
+for entry in os.scandir(DIR_PATH):  #Això em permet iterar per cada arxiu .fasta que puc tenir al meu folder
     if entry.is_file() and entry.path.endswith(".fasta"):   # check if it's a file
         print(get_proteins_ratio_by_residue_threshold(entry.path, "L"))
         print_sequence_summary(entry.path, "sequence_summary.txt")
@@ -145,12 +145,14 @@ print(get_sequence_with_min_molecular_weight("uniprot_sprot_sample.fasta"))
 
 print("--------- Exercise 8 ----------")
 # !!!!! 8. A FUNCTION THAT, GIVEN A PROTEIN FASTA FILE, RETURNS THE MEAN OF THE MOLECULAR WIGHTS OF ALL THE PROTEINS
-def get_mean_moleuclar_weigh(fasta_filename):
+def get_mean_molecular_weight(fasta_filename):
+    weights = [] #creates a list 
     for header, sequence in FASTA_iterator(fasta_filename):
         clean_seq = sequence.replace("X", "")
         analysed_seq = ProteinAnalysis(clean_seq)
         weight = analysed_seq.molecular_weight()
-    mean_weight = round(np.mean(weight), 2)
+        weights.append(weight) #append each weigth to at the end, calculate the average
+    mean_weight = round(np.mean(weights), 2)
     return mean_weight
-print(get_mean_moleuclar_weigh("uniprot_sprot_sample.fasta"))
+print(get_mean_molecular_weight("uniprot_sprot_sample.fasta"))
 
