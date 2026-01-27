@@ -10,6 +10,8 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__)) # set directory path
 
 ## 1. Write a function that reads a FASTA file and returns the ratio of proteins that have at least a given absolute and relative frequency of a specified amino acid residue.
 print("--------- Exercise 1 ----------")
+
+#ACLARIMENT!!!: En aquest exercisi he volgut posar una funció que itera per tots els archius fasta que pugui tenir en el meu directori, així que si surten molts resultats, dependrà de quants .fasta tinguis!!!
 def get_proteins_ratio_by_residue_threshold(filename, residue, relative_threshold=0.05, absolute_threshold=20):
     residue=residue.upper()
     total_proteins = 0 
@@ -64,7 +66,7 @@ def get_max_sequence_length_from_FASTA_file(fasta_filename):
             if len(sequence) > len(max_seq):
                 max_seq = sequence
                 #max_header = header
-    return f"Length of the max_seq:\t{len(max_seq)}\nmax_seq:\t{max_seq}\n"
+    return len(max_seq)
 print(get_max_sequence_length_from_FASTA_file("uniprot_sprot_sample.fasta"))
 
 print("--------- Exercise 3 ----------")
@@ -77,7 +79,7 @@ def get_min_sequence_length_from_FASTA_file(fasta_filename):
         else:
             if len(sequence) < len(min_seq):
                 min_seq = sequence
-    return f"Length of the min_seq:\t{len(min_seq)}\nmin_seq:\t{min_seq}\n"
+    return len(min_seq)
 print(get_min_sequence_length_from_FASTA_file("uniprot_sprot_sample.fasta"))
 
 print("--------- Exercise 4 ----------")
