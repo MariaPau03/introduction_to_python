@@ -8,7 +8,7 @@ This script calculates, for each chain in a PDB structure, the mean of the minim
 
 ### Start importing the necessary modules
 
-''' pyth:on
+''' python
 import sys #Standard libraries for system operations (like reading files) and math (like square roots).
 import math
 from typing import Dict, List, Tuple, Optional
