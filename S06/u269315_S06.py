@@ -32,9 +32,9 @@ def parse_atom_records_positional(lines: List[str]) -> Chains: #Returns a comple
     chains: Chains = {}
     for line in lines:
          #Record name is columns 1-6, so in python it is writen like [0:6], because the last number it is not inlcuded
-         rec = line[0:6]
-         if rec not in ("ATOM", "HETATM"):
-              continue
+         rec = line[0:4].strip()
+         if rec not in ("ATOM"):
+            continue
          #Ensure to have enough width for coordinates up to column 54
          if len(line) < 54:
               continue
@@ -125,27 +125,19 @@ def calculate_pdb_chain_mean_minimum_distances(pdb_file_path: Optional[str] = No
         coords_list = [coords for _, coords in residues]
         n = len(coords_list)
 
-        #For each residue, track its closest other-residue distance ^2
-        # [float("inf")] = a list with one element: infinity
-        # * n = repeat that list n times (where n is the number of residues)
-        per_res_min_d2 = [float("inf")] * n
-
-        #Compute pairwise residue distancces and update minima
+        #Compute mean of all pairwise residue minimum distances
+        pairwise_distances = []
         for i in range(n):
             for j in range(i + 1, n):
+                # Find minimum distance between atoms in these two residues
                 d2 = min_residue_residue_dist2(coords_list[i], coords_list[j])
-                if d2 < per_res_min_d2[i]:
-                    per_res_min_d2[i] = d2
-                if d2 < per_res_min_d2[j]:
-                    per_res_min_d2[j] = d2
+                d = math.sqrt(d2)
+                pairwise_distances.append(d)
 
-        #Convert to distance and compute mean
-        per_res_min = [math.sqrt(d2) for d2 in per_res_min_d2 if math.isfinite(d2)]
-        if not per_res_min:
+        if not pairwise_distances:
             continue
 
-        results[chain_id] = sum(per_res_min) / len(per_res_min)
-
+        results[chain_id] = sum(pairwise_distances) / len(pairwise_distances)
     return results
 
 # COMMAND-LINE INTERFACE ------
@@ -162,7 +154,7 @@ def main(argv: List[str]) -> int:
                 }
         '''
         for chain_id in sorted(means): #loop through chainIDs in alphabetical order
-            print(f"{chain_id}:\t{means[chain_id]:.4f}")
+            print(f"{chain_id}: {means[chain_id]:.4f}")
             # For example: means[chain_id] = means["A"] = 3.4567
         return 0 #return 0 for sucess
 
