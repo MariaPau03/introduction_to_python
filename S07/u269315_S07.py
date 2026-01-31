@@ -31,7 +31,7 @@ class Protein(): #Define the class Protein
         else:
             return False
 
- #Aquí és on connecto la definició de la classe (motlle) amb les dades reals del fitxer.    
+#Aquí és on connecto la definició de la classe (motlle) amb les dades reals del fitxer.    
 def FASTA_iterator(fasta_filename):
     header = None #initialize as none
     sequences_parts = [] #empty list, because sequences are often split across multiple lines 
