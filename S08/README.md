@@ -1,4 +1,5 @@
 #Biological Sequence Analysis Script
+
 This script implements a hierarchical object-oriented system to manage and analyze biological sequences (DNA, RNA, and Protein). It utilizes a custom module, sequence_dictionaries.py, for molecular data such as valid alphabets, weights and translation tables.
 
 ## Overview
