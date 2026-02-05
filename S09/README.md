@@ -30,7 +30,7 @@ This Python project implements an object-oriented hierarchy for handling biologi
 
 - Hashing: Implemented via __hash__ using a tuple of the identifier and sequence. This allows objects to be used in sets or as dictionary keys.
 
-## Frequently Asked Questions from our Session
+## Frequently asked questions I had
 
 - Why are these called "Instances"? An instance is a specific object created from a class blueprint. While DNASequence is the rulebook, dna1 is the actual "player" containing specific data.
 
