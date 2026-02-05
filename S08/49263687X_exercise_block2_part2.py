@@ -84,7 +84,7 @@ class RNASequence(NucleotideSequence): #INSTANTIATED!!!!
 
     def reverse_transcribe(self) -> DNASequence:
         dna_seq = self.get_sequence(). replace("U", "T")
-        return DNASequence(self.get_identifier, dna_seq)
+        return DNASequence(self.get_identifier(), dna_seq)
 
 # --- TEST BLOCK ---, will only be run when directly executed this file!!!
 # if __name__ == "__main__":
