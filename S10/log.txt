@@ -1,0 +1,8 @@
+2 FASTA files found.
+small_DNA_seq.fasta finished.
+Error: The sequence item D is not found in the alphabet of class DNASequence
+test_sequences.fasta finished.
+3 sequences found.
+Sorting the sequences...
+Sort process finished.
+Program finished correctly.

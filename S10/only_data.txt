@@ -1,0 +1,2 @@
+Valid_DNA_02	2	323.41
+Valid_DNA_01	3	327.39
