@@ -24,7 +24,6 @@ if __name__ == "__main__": #This is telling -> ONLY RUN THE CODE BELOW IF I RAN 
 #To call a generator in the script:
     for head, seq in FASTA_iterator("uniprot_sprot_sample.fasta"):
         # Note: 'head' and 'seq' match the variables assigned in this loop
-        print(f"ID: {head}")
-        print(f"Sequence: {(seq)}")
-        print("-" * 10)
+        print(head, len(seq))
+    
     

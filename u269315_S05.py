@@ -111,7 +111,7 @@ def get_shortest_sequences_from_FASTA_file(fasta_filename):
         else:
             if seq_len == min_length:
                 shortest_sequences.append((header, sequence))
-    shortest_sequences.sort(key=lambda x: x[0].lower())
+    shortest_sequences.sort(key=lambda x: x[0].lower()) #key=lambda x: x[0]: Tells Python to look at the first item in the tuple (the header/ID).
     return shortest_sequences
 print(get_shortest_sequences_from_FASTA_file("uniprot_sprot_sample.fasta"))
 
